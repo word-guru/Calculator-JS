@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--<h1>JavaScript Calculator</h1>-->
+<h1 class="jt --debug">
+  <span class="jt__row">
+    <span class="jt__text">Calculator JS</span>
+  </span>
+    <span class="jt__row jt__row--sibling" aria-hidden="true">
+    <span class="jt__text">Calculator JS</span>
+  </span>
+    <span class="jt__row jt__row--sibling" aria-hidden="true">
+    <span class="jt__text">Calculator JS</span>
+  </span>
+    <span class="jt__row jt__row--sibling" aria-hidden="true">
+    <span class="jt__text">Calculator JS</span>
+  </span>
+</h1>
+
+<div id="calculator" class="calculator">
+
+    <div id="viewer" class="viewer">0</div>
+
+    <button class="num" data-num="1">1</button>
+    <button class="num" data-num="2">2</button>
+    <button class="num" data-num="3">3</button>
+    <button data-ops="plus" class="ops">+</button>
+
+    <button class="num" data-num="4">4</button>
+    <button class="num" data-num="5">5</button>
+    <button class="num" data-num="6">6</button>
+    <button data-ops="minus" class="ops">-</button>
+
+    <button class="num" data-num="7">7</button>
+    <button class="num" data-num="8">8</button>
+    <button class="num" data-num="9">9</button>
+    <button data-ops="times" class="ops">*</button>
+
+    <button class="num" data-num="0">0</button>
+    <button class="num" data-num=".">.</button>
+    <button id="clear" class="clear">C</button>
+    <button data-ops="divided by" class="ops">/</button>
+
+    <button id="equals" class="equals" data-result="">=</button>
+</div>
+
+<button id="reset" class="reset">Reset Universe?</button>
+<script src="script.js"></script>
+</body>
+</html>

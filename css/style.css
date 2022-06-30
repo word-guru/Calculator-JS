@@ -1,0 +1,302 @@
+html {
+    background: #100a1c;
+    background-image: radial-gradient(50% 30% ellipse at center top, #ad3e1c 0%,
+    rgba(0, 0, 0, 0) 100%),
+    radial-gradient(60% 50% ellipse at center bottom, #7a7434 0%, #915e23 100%);
+    background-attachment: fixed;
+}
+
+body {
+    color: #47157e;
+    font: 300 18px/1.6 "Source Sans Pro", sans-serif;
+    margin: 0;
+    padding: 5em 0 2em;
+    text-align: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+h1{
+    margin-left: 0.7em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.jt {
+    position: relative;
+    font-size: 20vmin;
+    font-family: 'Staatliches', sans-serif;
+    text-transform: uppercase;
+    font-display: swap;
+    text-align: center;
+    text-shadow: 0 0 10px tomato;
+}
+
+.jt__row {
+    display: block;
+}
+.jt__row:nth-child(1) {
+    clip-path: polygon(-10% 75%, 110% 75%, 110% 110%, -10% 110%);
+}
+.jt__row:nth-child(2) {
+    clip-path: polygon(-10% 50%, 110% 50%, 110% 75.3%, -10% 75.3%);
+}
+.jt__row:nth-child(3) {
+    clip-path: polygon(-10% 25%, 110% 25%, 110% 50.3%, -10% 50.3%);
+}
+.jt__row:nth-child(4) {
+    clip-path: polygon(-10% 0%, 110% 0%, 110% 25.3%, -10% 25.3%);
+}
+
+.jt__row.jt__row--sibling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+    witdh:800px;
+}
+
+.jt__text {
+    display: block;
+    transform-origin: bottom left;
+    animation: moveIn 2s 0s cubic-bezier(.36,0,.06,1) alternate infinite ;
+}
+.jt__row:nth-child(1) .jt__text {
+    transform: translateY(-0.1em);
+}
+.jt__row:nth-child(2) .jt__text {
+    transform: translateY(-0.3em) scaleY(1.1);
+}
+.jt__row:nth-child(3) .jt__text {
+    transform: translateY(-0.5em) scaleY(1.2) ;
+}
+.jt__row:nth-child(4) .jt__text {
+    transform: translateY(-0.7em) scaleY(1.3) ;
+}
+.jt__row:nth-child(5) .jt__text {
+    transform: translateY(-0.9em) scaleY(1.4) ;
+}
+.jt__row:nth-child(6) .jt__text {
+    transform: translateY(-1.1em) scaleY(1.5) ;
+}
+
+@keyframes moveIn {
+    50%, 100% {
+        transform: translateY(0em)
+    }
+    0%   {
+        opacity: 0;
+        filter: blur(10px);
+
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+
+
+.debug .jt__row:nth-child(even) {
+    color: black;
+    background: white;
+}
+.debug .jt__row:nth-child(odd) {
+    color: white;
+    background: black;
+}
+
+
+.calculator {
+    font-size: 28px;
+    margin: 0 auto;
+    width: 10em;
+}
+.calculator::before,after {
+     content: " ";
+     display: table;
+ }
+
+.calculator::after {
+     clear: both;
+ }
+
+
+/* Калькулятор после деления на ноль */
+.broken {
+    animation: broken 2s;
+    transform: translate3d(0, -2000px, 0);
+    opacity: 0;
+}
+
+.viewer {
+    color: #2dc421;
+    float: outside;
+    font-size: 1.3em;
+    line-height: 3em;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 3em;
+}
+
+button {
+    border: 0;
+    border-radius: 5px;
+    background: rgba(228, 241, 87, 0.28);
+    color: #38c2b2;
+    cursor: pointer;
+    float: left;
+    font: inherit;
+    width: 2em;
+    height: 2em;
+    transition: all 0.5s;
+}
+button:hover {
+     background: #99e361;
+     color: #509ae3;
+ }
+
+button:focus {
+    outline: 0; /*Лучше проверьте доступность*/
+}
+    /* Исчезающие значения, которые появляются */
+button::after {
+    animation: zoom 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both; // Fix Firefox from firing animations only once
+    content: attr(data-num);
+    cursor: default;
+    font-size: 100px;
+    position: absolute;
+    top: 1.5em;
+    left: 50%;
+    text-align: center;
+    margin-left: -24px;
+    opacity: 0;
+    width: 48px;
+}
+.equals{
+    /*float: outside;*/
+    width: 310px;
+}
+/* То же, что и выше, изменено для операторов */
+.ops:focus::after {
+    content: attr(data-ops);
+    margin-left: -210px;
+    width: 420px;
+}
+
+/* То же, что и выше, изменено для получения результата */
+.equals:focus::after {
+    content: attr(data-result);
+    margin-left: -300px;
+    width: 600px;
+}
+
+/* Reset button */
+
+.reset {
+    background: rgba(201, 120, 116, 0.28);
+    color: #c97874;
+    font-weight: 400;
+    margin-left: -77px;
+    padding: 0.5em 1em;
+    position: absolute;
+    top: -20em;
+    left: 50%;
+    width: auto;
+    height: auto;
+}
+.reset:hover {
+     background: #c97874;
+     color: #100a1c;
+ }
+
+/* Когда кнопка будет открыта */
+.reset.show {
+     top: 20em;
+     animation: fadein 4s;
+ }
+
+
+/* Animations */
+
+/* Значения, которые отображаются при нажатии */
+@keyframes zoom {
+    0% {
+        transform: scale(0.2);
+        opacity: 1;
+    }
+
+    70% {transform: scale(1);}
+
+    100% {opacity: 0;}
+}
+
+/* Анимация деления на ноль */
+@keyframes broken {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+
+    5% {
+        transform: rotate(5deg);
+    }
+
+    15% {
+        transform: rotate(-5deg);
+    }
+
+    20% {
+        transform: rotate(5deg);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(45deg);
+    }
+
+    70% {
+        transform: translate3d(0, 2000px, 0);
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate3d(0, -2000px, 0);
+    }
+}
+
+/* Кнопка сброса исчезает */
+@keyframes fadein {
+    0% {
+        top: 20em;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 420px) {
+    .calculator {
+        width: 12em;
+    }
+    .viewer {
+        width: 8.5em;
+    }
+    button {
+        margin: 0.5em;
+    }
+}
